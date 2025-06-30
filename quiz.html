@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Database App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      padding-top: 70px;
+    }
+    .movie-card {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">MovieDB</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+    </ul>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search (does nothing)">
+      <button class="btn btn-outline-success" type="button">Search</button>
+    </form>
+  </div>
+</nav>
+
+<!-- Services Section -->
+<div class="container" id="services">
+  <h2 class="mt-4">Search for a Movie</h2>
+  <div class="input-group mb-3">
+    <input type="text" id="movieTitle" class="form-control" placeholder="Enter movie title">
+    <div class="input-group-append">
+      <button class="btn btn-primary" id="searchBtn">Search</button>
+    </div>
+  </div>
+  <div id="movieInfo" class="movie-card"></div>
+</div>
+
+<!-- JavaScript with local data -->
+<script>
+  const movies = [
+    {
+      title: "Inception",
+      rating: "8.8",
+      actors: "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page",
+      genre: "Action, Sci-Fi, Thriller"
+    },
+    {
+      title: "The Matrix",
+      rating: "8.7",
+      actors: "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss",
+      genre: "Action, Sci-Fi"
+    },
+    {
+      title: "Titanic",
+      rating: "7.8",
+      actors: "Leonardo DiCaprio, Kate Winslet",
+      genre: "Drama, Romance"
+    },
+    {
+      title: "The Dark Knight",
+      rating: "9.0",
+      actors: "Christian Bale, Heath Ledger, Aaron Eckhart",
+      genre: "Action, Crime, Drama"
+    }
+  ];
+
+  $(document).ready(function () {
+    $('#searchBtn').click(function () {
+      const inputTitle = $('#movieTitle').val().toLowerCase().trim();
+      const movie = movies.find(m => m.title.toLowerCase() === inputTitle);
+
+      if (movie) {
+        const movieHtml = `
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">${movie.title}</h4>
+              <p><strong>Rating:</strong> ${movie.rating}</p>
+              <p><strong>Actors:</strong> ${movie.actors}</p>
+              <p><strong>Genre:</strong> ${movie.genre}</p>
+            </div>
+          </div>
+        `;
+        $('#movieInfo').html(movieHtml);
+      } else {
+        $('#movieInfo').html('<div class="alert alert-danger">Movie not found in our database.</div>');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Recommender</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <style>
+   body, html {
+      height: 100%;
+      margin: 0;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
+      background-size: cover;
+    }
+    
+
+    body {
+      background-color: #926992;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .product img {
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .card.product {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .product p {
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-top: 40px;
+      color: #fff;
+    }
+
+
+    .card.product:hover {
+      transform: scale(1.05);
+      transition: 0.5s;
+    }
+.navbar a:hover {
+  color:blue;
+  transition: 1s;
+}
+
+    .footer {
+      background-color: #2d2d2d;
+      color: #fff;
+      padding: 40px 0;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons i {
+      margin: 0 10px;
+      font-size: 20px;
+    }
+     #details-box {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 20px;
+    }
+
+    
+    #cartDropdownMenu {
+      position: absolute;
+      right: 10px;
+      top: 50px;
+      background: white;
+      border: 1px solid #ddd;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1050;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    #cartDropdownMenu h6 {
+      margin-top: 0;
+    }
+
+    #cartDropdownMenu .cart-item {
+      border-bottom: 1px solid #eee;
+      padding: 8px 0;
+    }
+
+    #cartDropdownMenu .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    #cartIconWrapper {
+      position: relative;
+      cursor: pointer;
+      margin-left: 15px;
+      color: white;
+    }
+
+    #cartCount {
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      line-height: 18px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="#">Travel Recommender</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item"><a class="nav-link" href="#" id="nav-home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="nav-services">Services</a></li>
+       <li class="nav-item"><a class="nav-link" href="#" id="about-link">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="nav-contact">Contact</a></li>
+      </ul>
+      <input type="text" class="form-control w-auto" placeholder="Search" />
+     
+      <div id="cartIconWrapper" title="View Cart">
+        <i class="fas fa-shopping-cart fa-lg"></i>
+        <div id="cartCount" style="display:none;">0</div>
+      </div>
+
+      <div id="cartDropdownMenu">
+        <h6>Your Booked Packages</h6>
+        <div id="cartItemsContainer"></div>
+        <button id="clearCartBtn" class="btn btn-sm btn-danger mt-2 w-100">Clear Cart</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div id="home-section" class="container mt-4">
+
+      <div class="section-heading">
+        <h2>Trending Cities</h2>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <a href="javascript:void(0)" class="package-link" data-name="Goa" data-description="Beautiful beaches and vibrant nightlife in Goa." data-budget="50000" data-duration="5">
+            <div class="card product">
+              <img src="C:/Users/Shajid/OneDrive/Desktop/basic html/pro1/11.jpeg" alt="Goa" />
+              <div class="card-body text-center">
+                <p class="card-text">Goa</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="javascript:void(0)" class="package-link" data-name="Ladakh" data-description="Breathtaking mountain views and serene lakes." data-budget="60000" data-duration="7">
+            <div class="card product">
+              <img src="C:/Users/Shajid/OneDrive/Desktop/basic html/pro1/22.jpg" alt="Ladakh" />
+              <div class="card-body text-center">
+                <p class="card-text">Ladakh</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="javascript:void(0)" class="package-link" data-name="Singapore" data-description="Modern cityscape, shopping, and food paradise." data-budget="70000" data-duration="6">
+            <div class="card product">
+              <img src="C:/Users/Shajid/OneDrive/Desktop/basic html/pro1/33.jpeg" alt="Singapore" />
+              <div class="card-body text-center">
+                <p class="card-text">Singapore</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+   <div id="services-section" class="container mt-4" style="display: none;">
+      <h2>Discover Your Next Destination</h2>
+      <form id="preferenceForm">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="budget">Budget ($)</label>
+            <input type="number" class="form-control" id="budget" required />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="duration">Trip Duration (days)</label>
+            <input type="number" class="form-control" id="duration" required />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="experience">Type of Experience</label>
+            <select class="form-control" id="experience" required>
+              <option value="">Select</option>
+              <option value="nature">Nature</option>
+              <option value="romantic">Romantic</option>
+              <option value="beach">Beach</option>
+              <option value="adventure">Adventure</option>
+              <option value="cultural">Cultural</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Get Recommendations</button>
+      </form>
+      <div class="row mt-4" id="recommendations"></div>
+    </div>
+
+    <div id="about-section" class="container mt-5" style="display: none;">
+      <div id="details-box">
+        <h3>About Us</h3>
+        <p>
+          Welcome to Travel Recommender – your trusted partner in discovering the most beautiful places around the world! We help travelers explore destinations based on their budget, duration, and interests. Whether you're seeking adventure in the wild, serenity in nature, or excitement in new cultures, we’ve got the perfect spot for you.
+        </p>
+      </div>
+    </div>
+    <div id="contact-section" class="container mt-5" style="display: none;">
+      <h3>Contact Us</h3>
+      <form>
+        <div class="mb-3">
+          <label for="contact-name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="contact-name" required />
+        </div>
+        <div class="mb-3">
+          <label for="contact-email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="contact-email" required />
+        </div>
+        <div class="mb-3">
+          <label for="contact-message" class="form-label">Message</label>
+          <textarea class="form-control" id="contact-message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </main>
+  <div class="modal fade" id="packageModal" tabindex="-1" aria-labelledby="packageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="packageModalLabel">Package Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4 id="modalPackageName"></h4>
+          <p id="modalPackageDescription"></p>
+          <p><strong>Budget:</strong> $<span id="modalPackageBudget"></span></p>
+          <p><strong>Duration:</strong> <span id="modalPackageDuration"></span> days</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="bookNowBtn" class="btn btn-primary">Book Now</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    const destinations = [
+      { name: "Australia", type: "adventure", budget: 200000, duration: 10, description: "Explore the Great Barrier Reef, outback adventures, and modern cities." },
+{ name: "Canada", type: "nature", budget: 180000, duration: 12, description: "Vast landscapes, mountain ranges, and rich multicultural experiences." },
+    ];
+    let cart = [];
+    function showSection(id) {
+      $("#home-section, #services-section,  #about-section, #contact-section").hide();
+      $("#" + id).show();
+      $("#details-box").hide();
+      $("#cartDropdownMenu").hide();
+    }
+
+$(document).ready(function () {
+  showSection("home-section");
+
+  $("#nav-home").click(() => showSection("home-section"));
+  $("#nav-services").click(() => showSection("services-section"));
+  $("#about-link").click(() => {
+    showSection("about-section");
+    $("#details-box").show(); // <-- make sure About content is shown
+  });
+  $("#nav-contact").click(() => showSection("contact-section"));
+
+  $(".card.product").click(function () {
+    const name = $(this).data("name");
+    const dest = destinations.find(d => d.name === name);
+    if (dest) {
+      $("#details-box").html(`
+        <h3>${dest.name}</h3>
+        <p>${dest.description}</p>
+        <p><strong>Type:</strong> ${dest.type}</p>
+        <p><strong>Budget:</strong> ₹${dest.budget}</p>
+        <p><strong>Duration:</strong> ${dest.duration} days</p>
+      `).show();
+    }
+  });
+
+  $(".package-link").click(function () {
+    const name = $(this).data("name");
+    const description = $(this).data("description");
+    const budget = $(this).data("budget");
+    const duration = $(this).data("duration");
+
+    $("#modalPackageName").text(name);
+    $("#modalPackageDescription").text(description);
+    $("#modalPackageBudget").text(budget);
+    $("#modalPackageDuration").text(duration);
+    $("#bookNowBtn").data("package", { name, description, budget, duration });
+    const modal = new bootstrap.Modal(document.getElementById("packageModal"));
+    modal.show();
+  });
+
+  $("#bookNowBtn").click(function () {
+    const pkg = $(this).data("package");
+    cart.push(pkg);
+    updateCartCount();
+    $("#packageModal").modal("hide");
+  });
+
+  function updateCartCount() {
+    if (cart.length > 0) {
+      $("#cartCount").text(cart.length).show();
+    } else {
+      $("#cartCount").hide();
+    }
+  }
+
+  $("#cartIconWrapper").click(function (e) {
+    e.stopPropagation();
+    const menu = $("#cartDropdownMenu");
+    if (menu.is(":visible")) {
+      menu.hide();
+    } else {
+      renderCartItems();
+      menu.show();
+    }
+  });
+
+  function renderCartItems() {
+    const container = $("#cartItemsContainer");
+    container.empty();
+    if (cart.length === 0) {
+      container.append('<p>Your cart is empty.</p>');
+      $("#clearCartBtn").hide();
+      return;
+    }
+    $("#clearCartBtn").show();
+    cart.forEach((item, idx) => {
+      container.append(`
+        <div class="cart-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>${item.name}</strong><br />
+            <small>Budget: $${item.budget}, Duration: ${item.duration} days</small>
+          </div>
+          <button class="btn btn-sm btn-danger remove-cart-item" data-idx="${idx}">&times;</button>
+        </div>
+      `);
+    });
+  }
+
+  $("#cartItemsContainer").on("click", ".remove-cart-item", function () {
+    const idx = $(this).data("idx");
+    cart.splice(idx, 1);
+    updateCartCount();
+    renderCartItems();
+  });
+
+  $("#clearCartBtn").click(() => {
+    cart = [];
+    updateCartCount();
+    renderCartItems();
+  });
+
+  $(document).click(() => {
+    $("#cartDropdownMenu").hide();
+  });
+
+  updateCartCount();
+});
+
+  </script>
+</body>
+</html>

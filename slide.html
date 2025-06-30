@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Up & Down</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background: lightblue;
+            margin: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btnDown">Slide Down</button>
+    <button id="btnUp">Slide Up</button>
+    <button id="btnToggle">Slide Toggle</button>
+
+    <div id="box">Hello, jQuery!</div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnUp").click(function(){
+                $("#box").slideUp("slow");
+                 });
+
+            $("#btnToggle").click(function(){
+                $("#box").slideToggle("slow");
+            });
+        });
+    </script>
+
+</body>
+</html>

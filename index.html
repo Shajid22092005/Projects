@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Recommender</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .product img {
+      width: 100%;
+      height: 150px;
+      background-color: white;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product p {
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .section-heading {
+      text-align:center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    .card product:hover {
+     transform:scale(1.10);
+     transition:2s;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="#">Travel Recommender</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="nav-home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="nav-services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="nav-contact">Contact</a>
+        </li>
+      </ul>
+      <input type="text" class="form-control w-auto" placeholder="Search" />
+    </div>
+  </nav>
+
+  <div id="home-section" class="container mt-4">
+    <div class="section-heading">
+      <h2>Trending Cities</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\11.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Goa</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\22.jpg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Ladakh</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\33.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Singapore</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-heading">
+      <h2>Famous places</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\333.jpeg" alt="" />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\222.jpeg" alt="" />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\111.jpeg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="services-section" class="container mt-4" style="display: none;">
+    <h2>Discover Your Next Destination</h2>
+    <form id="preferenceForm">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="budget">Budget ($)</label>
+          <input type="number" class="form-control" id="budget" required />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="duration">Trip Duration (days)</label>
+          <input type="number" class="form-control" id="duration" required />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="experience">Type of Experience</label>
+          <select class="form-control" id="experience" required>
+            <option value="">Select</option>
+            <option value="beach">Beach</option>
+            <option value="adventure">Adventure</option>
+            <option value="cultural">Cultural</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Get Recommendations</button>
+    </form>
+    <div class="row mt-4" id="recommendations"></div>
+  </div>
+
+  <div id="contact-section" class="container mt-5" style="display: none;">
+    <h3>Contact Us</h3>
+    <form>
+      <div class="mb-3">
+        <label for="contact-name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="contact-name" required />
+      </div>
+      <div class="mb-3">
+        <label for="contact-email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="contact-email" required />
+      </div>
+      <div class="mb-3">
+        <label for="contact-message" class="form-label">Message</label>
+        <textarea class="form-control" id="contact-message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+  <script>
+    const destinations = [
+      {
+        name: "Goa",
+        type: "beach",
+        budget: 12000,
+        duration: 7,
+        description: "A tropical paradise with stunning beaches and vibrant culture."
+      },
+      {
+        name: "Ladakh",
+        type: "adventure",
+        budget: 25000,
+        duration: 10,
+        description: "A perfect spot for skiing, hiking, and alpine beauty."
+      },
+      {
+        name: "Singapore",
+        type: "cultural",
+        budget: 150000,
+        duration: 5,
+        description: "Traditional temples, cherry blossoms, and rich heritage."
+      }
+    ];
+
+    function showSection(id) {
+      $("#home-section, #services-section, #contact-section").hide();
+      $("#" + id).show();
+    }
+
+    $(document).ready(function () {
+      showSection("home-section");
+
+      $("#nav-home").click(() => showSection("home-section"));
+      $("#nav-services").click(() => showSection("services-section"));
+      $("#nav-contact").click(() => showSection("contact-section"));
+
+      $("#preferenceForm").submit(function (e) {
+        e.preventDefault();
+        const budget = parseInt($("#budget").val());
+        const duration = parseInt($("#duration").val());
+        const experience = $("#experience").val();
+
+        const results = destinations.filter(d =>
+          d.budget <= budget && d.duration <= duration && d.type === experience
+        );
+
+        const container = $("#recommendations");
+        container.empty();
+
+        if (results.length === 0) {
+          container.append('<div class="col-12"><p>No matching destinations found.</p></div>');
+        } else {
+          results.forEach(d => {
+            container.append(`
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h5 class="card-title">${d.name}</h5>
+                    <p class="card-text">${d.description}</p>
+                    <button class="btn btn-outline-info">View Reviews</button>
+                  </div>
+                </div>
+              </div>
+            `);
+          });
+        }
+      });
+
+      $("#contact-section form").submit(function (e) {
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>

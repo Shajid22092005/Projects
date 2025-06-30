@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movie Recommender</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background-color: #ffe4cd;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      background-color: white;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product p {
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .card.product:hover {
+      transform: scale(1.05);
+      transition: 0.5s;
+    }
+
+    .carousel-inner {
+      width: 100%;
+      height: 500px;
+    }
+
+    .carousel-inner img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .footer {
+      background-color: #2d2d2d;
+      color: #fff;
+      padding: 40px 0;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons i {
+      margin: 0 10px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="#">Movie Recommender</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="nav-home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="nav-services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="nav-contact">Contact</a>
+        </li>
+      </ul>
+      <input type="text" class="form-control w-auto" placeholder="Search" />
+    </div>
+  </nav>
+  <main>
+
+  <div id="home-section" class="container mt-4">
+
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\arrival.jpeg" class="d-block w-100" alt="Thailand">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Arraival</h5>
+              <p>A Sci-fi movie with an adventure creativity.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\final-destination-bloodlines.jpg" class="d-block w-100" alt="Australia">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>final-destination-bloodlines</h5>
+              <p>A movie full of thriller experience.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\mission-impossible.jpg" class="d-block w-100" alt="Dubai">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>mission-impossible</h5>
+              <p>An adventure movie with suspence and thriller mixed.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+    <div class="section-heading">
+      <h2>Trending Movies</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\intersteller.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Intersteller</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\openheimer.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Openheimer</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\sinners.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Sinners</p>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\chota.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Chota Bheem adventures</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\ben-10.webp" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Ben 10 Ultimate alien </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\shinchan.png" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Shinchan wedding plan</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-heading">
+      <h2>Famous Movies</h2>
+    </div>
+    <div class="row g-5">
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\Inception1.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Inception</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\The Matrix.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">The Matrix</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\titanic.jpeg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Titanic</p>
+          </div>
+        </div>
+      </div>
+      <div class="row g-5">
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\jailer.avif" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Jalier</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\leo.jpg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Leo</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\vidamu.jpg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Vidamuyarchi</p>
+          </div>
+        </div>
+    </div>
+    <div class="row g-5">
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\salaar.jpg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Salaar</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\game changer.jpg" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">Game Changer</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product">
+          <img src="C:\Users\Shajid\OneDrive\Desktop\basic html\pro1\kgf.png" alt="" />
+          <div class="card-body text-center">
+            <p class="card-text">KGF</p>
+          </div>
+        </div>
+      </div>
+ 
+
+   <div id="services-section" class="container mt-4" style="display: none;">
+      <h2 class="mt-4">Search for a Movie</h2>
+      <div class="input-group mb-3">
+        <input type="text" id="movieTitle" class="form-control" placeholder="Enter movie title">
+        <button class="btn btn-primary" id="searchBtn">Search</button>
+      </div>
+      <div id="movieInfo" class="movie-card"></div>
+    </div>
+    <div id="contact-section" class="container mt-5" style="display: none;">
+      <h3>Contact Us</h3>
+      <form>
+        <div class="mb-3">
+          <label for="contact-name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="contact-name" required />
+        </div>
+        <div class="mb-3">
+          <label for="contact-email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="contact-email" required />
+        </div>
+        <div class="mb-3">
+          <label for="contact-message" class="form-label">Message</label>
+          <textarea class="form-control" id="contact-message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </main>
+  <footer class="footer mt-auto">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <p><a href="#">About Us</a></p>
+          <p><a href="#">Contact Us</a></p>
+          <p><a href="#">Support Us</a></p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p><strong>Follow Us</strong></p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p><a href="#">Privacy Policy</a></p>
+          <p><a href="#">Terms & Conditions</a></p>
+          <p>&copy; 2025 All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+ 
+  <script>
+    const movies = [
+      {
+        title: "Inception",
+        rating: "8.8",
+        actors: "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page",
+        genre: "Action, Sci-Fi, Thriller"
+      },
+      {
+        title: "The Matrix",
+        rating: "8.7",
+        actors: "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss",
+        genre: "Action, Sci-Fi"
+      },
+      {
+        title: "Titanic",
+        rating: "7.8",
+        actors: "Leonardo DiCaprio, Kate Winslet",
+        genre: "Drama, Romance"
+      },
+      {
+        title: "The Dark Knight",
+        rating: "9.0",
+        actors: "Christian Bale, Heath Ledger, Aaron Eckhart",
+        genre: "Action, Crime, Drama"
+      },
+      {
+        title: "Interstellar",
+        rating: "8.6",
+        actors: "Matthew McConaughey, Anne Hathaway, Jessica Chastain",
+        genre: "Adventure, Drama, Sci-Fi"
+      },
+      {
+        title: "Oppenheimer",
+        rating: "8.4",
+        actors: "Cillian Murphy, Emily Blunt, Robert Downey Jr.",
+        genre: "Biography, Drama, History"
+      },
+      {
+        title: "Sinners",
+        rating: "7.9",
+        actors: "Michael B.Jordan, Hailee Steinfeld",
+        genre: "Horror,Thriller"
+      },
+      {
+        title: "Jailer",
+        rating: "7.1",
+        actors: "Rajinikanth, Vinayakan, Tamannaah Bhatia",
+        genre: "Action, Crime, Drama"
+      },
+      {
+        title: "Leo",
+        rating: "7.0",
+        actors: "Vijay, Sanjay Dutt, Trisha Krishnan",
+        genre: "Action, Thriller"
+      },
+      {
+        title: "Vidamuyarchi",
+        rating: "6.2",
+        actors: "Ajith Kumar",
+        genre: "Action"
+      },
+      {
+        title: "Salaar",
+        rating: "6.5",
+        actors: "Prabhas, Prithviraj Sukumaran, Shruti Haasan",
+        genre: "Action, Drama, Thriller"
+      },
+      {
+        title: "Game Changer",
+        rating: "5.2",
+        actors: "Ram Charan, Kiara Advani",
+        genre: "Action, Drama"
+      },
+      {
+        title: "KGF: Chapter 1",
+        rating: "8.2",
+        actors: "Yash, Srinidhi Shetty, Anant Nag",
+        genre: "Action, Crime, Drama"
+      },
+      {
+        title: "KGF: Chapter 2",
+        rating: "8.3",
+        actors: "Yash, Sanjay Dutt, Raveena Tandon",
+        genre: "Action, Crime, Drama"
+      },
+      {
+        title: "Shinchan Wedding plan",
+        rating: "9.7",
+        actors: "Shinchan, himawari,mexie,boochan",
+        genre: "Action, comedy"
+      },
+      {
+        title: "Chhota bheem ",
+        rating: "9.2",
+        actors: "chhota bheem, krishna,kirmada,suniyakaari",
+        genre: "Action, comedy, Thriller"
+      },
+      {
+        title: "Ben 10",
+        rating: "9.8",
+        actors: "Ben 10,gwen, grandpa,kevin",
+        genre: "Action, adventure"
+      },
+    ];
+
+    function showSection(id) {
+      $("#home-section, #services-section, #contact-section").hide();
+      $("#" + id).show();
+    }
+
+    $(document).ready(function () {
+      showSection("home-section");
+
+      $("#nav-home").click(() => showSection("home-section"));
+      $("#nav-services").click(() => showSection("services-section"));
+      $("#nav-contact").click(() => showSection("contact-section"));
+
+      $('#searchBtn').click(function () {
+        const inputTitle = $('#movieTitle').val().toLowerCase().trim();
+        const movie = movies.find(m => m.title.toLowerCase() === inputTitle);
+
+        if (movie) {
+          const movieHtml = `
+            <div class="card mt-3">
+              <div class="card-body">
+                <h4 class="card-title">${movie.title}</h4>
+                <p><strong>Rating:</strong> ${movie.rating}</p>
+                <p><strong>Actors:</strong> ${movie.actors}</p>
+                <p><strong>Genre:</strong> ${movie.genre}</p>
+              </div>
+            </div>
+          `;
+          $('#movieInfo').html(movieHtml);
+        } else {
+          $('#movieInfo').html('<div class="alert alert-danger mt-3">Movie not found in our database.</div>');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
